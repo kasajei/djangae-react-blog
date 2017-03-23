@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'djangae.contrib.security',
     'djangae_react_blog',
     # 'djangae.contrib.uniquetool',
+    'rest_framework',
+    'rest_framework_swagger',
 )
 
 MIDDLEWARE_CLASSES = (
