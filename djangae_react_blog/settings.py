@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     # 'djangae.contrib.uniquetool',
     'rest_framework',
     'rest_framework_swagger',
+    'blog'
 )
 
 MIDDLEWARE_CLASSES = (
