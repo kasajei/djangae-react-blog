@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     # 'djangae.contrib.uniquetool',
     'rest_framework',
     'rest_framework_swagger',
+    'webpack_loader',
     'blog'
 )
 
@@ -120,6 +121,15 @@ USE_TZ = True
 # Using a route that is not caught by appengines routing in app.yaml
 STATIC_URL = '/static-dev/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 # sensible default CSP settings, feel free to modify them
 CSP_DEFAULT_SRC = ("'self'", "*.gstatic.com")
@@ -131,6 +141,26 @@ CSP_FRAME_SRC = ("'self'", "www.google.com", "www.youtube.com", "accounts.google
 CSP_SCRIPT_SRC = ("'self'", "*.googleanalytics.com", "*.google-analytics.com", "ajax.googleapis.com", "'unsafe-inline'")
 CSP_IMG_SRC = ("'self'", "data:", "s.ytimg.com", "*.googleusercontent.com", "*.gstatic.com", "www.google-analytics.com")
 CSP_CONNECT_SRC = ("'self'", "plus.google.com", "www.google-analytics.com")
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ["templates"],
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ]
+        },
+    },
+]
 
 
 from djangae.contrib.gauth.settings import *

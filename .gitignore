@@ -49,3 +49,13 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+
+# Node modules
+node_modules/
+yarn.lock
+npm-debug.log
+
+# webpack
+assets/bundles/
+webpack-stats.json

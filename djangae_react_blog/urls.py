@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.views import serve
 
 import session_csrf
+from django.views.generic import TemplateView
+
 session_csrf.monkeypatch()
 
 from django.contrib import admin
@@ -26,6 +28,7 @@ urlpatterns = (
 
     url(r'^docs/', include('rest_framework_swagger.urls')),
 
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
 
     url(r'^api/v1/', include('blog.urls')),
 )
