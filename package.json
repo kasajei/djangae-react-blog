@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kasajei/djangae-react-blog#readme",
   "devDependencies": {
+    "axios": "^0.15.3",
     "babel": "^6.23.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
