@@ -1,13 +1,12 @@
-var React = require('react');
-var axios = require('axios');
+import React from 'react';
+import axios from 'axios';
 
 const host = window.location.host.split(':')[0];
 const ROOT_URL = (process.env.NODE_ENV == "production" ? 'https://' + host : 'http://' + host+':8000') + '/api/v1';
 
 
-
-var Post = React.createClass({
-    render: function () {
+class Post extends React.Component{
+    render(){
         return (
             <div className="post">
                 <h1>{this.props.post.title}</h1>
@@ -15,32 +14,36 @@ var Post = React.createClass({
                     {this.props.post.content}
                 </div>
             </div>
-        )
+        );
     }
-});
+}
 
 
 
-module.exports = React.createClass({
-    getInitialState : function () {
-        return {posts:[]}
-    },
-    loadPosts: function(){
+export default class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            posts:[]
+        };
+    }
+    loadPosts(){
+        var self = this;
         axios.get(ROOT_URL + "/posts").then(function(response){
-            this.setState({posts:response.data});
+            self.setState({posts:response.data});
         });
-    },
-    componentDidMount: function () {
+    }
+    componentDidMount() {
         this.loadPosts();
-    },
-    render: function(){
-        var Posts = this.state.posts.map(function (post) {
+    }
+    render(){
+        const Posts = this.state.posts.map(function (post) {
             return <Post post={post} key={post.id}/>
         });
         return (
             <div>
                 <header>
-                    <h1>Djangae + React Blog</h1>
+                    <h1>Djangae + React Blog@{process.env.NODE_ENV}サーバー</h1>
                 </header>
                 <div id="content">
                     {Posts}
@@ -48,4 +51,4 @@ module.exports = React.createClass({
             </div>
         );
     }
-});
+}
