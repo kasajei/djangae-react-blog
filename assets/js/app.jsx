@@ -2,7 +2,7 @@ var React = require('react');
 var axios = require('axios');
 
 const host = window.location.host.split(':')[0];
-const ROOT_URL = (process.env.NODE_ENV == "prod" ? 'https://' + host : 'http://' + host+':8000') + '/api/v1';
+const ROOT_URL = (process.env.NODE_ENV == "production" ? 'https://' + host : 'http://' + host+':8000') + '/api/v1';
 
 
 
@@ -25,10 +25,10 @@ module.exports = React.createClass({
     getInitialState : function () {
         return {posts:[]}
     },
-    loadPosts(){
-        axios.get(ROOT_URL + "/posts").then(response =>{
+    loadPosts: function(){
+        axios.get(ROOT_URL + "/posts").then(function(response){
             this.setState({posts:response.data});
-        })
+        });
     },
     componentDidMount: function () {
         this.loadPosts();
