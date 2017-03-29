@@ -28,9 +28,9 @@ urlpatterns = (
 
     url(r'^docs/', include('rest_framework_swagger.urls')),
 
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-
     url(r'^api/v1/', include('blog.urls')),
+
+    url(r'', TemplateView.as_view(template_name='index.html'), name='index'),
 )
 
 if settings.DEBUG:
