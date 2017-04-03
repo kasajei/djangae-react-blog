@@ -8,7 +8,7 @@ export function * getPosts (api, action) {
   const response = yield call(api.getPosts);
 
   if (response.ok) {
-    const posts = response.content;
+    const posts = response.data;
     yield put(PostsActions.postsSuccess(posts));
   } else {
     yield put(PostsActions.postsFailure());

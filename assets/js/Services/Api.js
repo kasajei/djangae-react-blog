@@ -10,7 +10,7 @@ const create = (baseURL = 'http://localhost:8000/api/v1/') => {
     timeout: 10000
   });
 
-  const getPosts = () => api.get('/posts');
+  const getPosts = () => api.get('/posts/');
 
   return {
     // a list of the API functions from step 2

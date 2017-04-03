@@ -9,7 +9,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 export default () => {
   const rootReducer = combineReducers({
     routing: routerReducer,
-    post: require('./PostsRedux').reducer,
+    posting: require('./PostsRedux').reducer,
   });
 
   return configureStore(rootReducer, rootSaga)

@@ -6,19 +6,18 @@ import Immutable from 'seamless-immutable'
 
 
 const { Types, Creators } = createActions({
-  postsRequest: [],
+  postsRequest: null,
   postsSuccess: ['posts'],
   postsFailure: null
 });
 
 export const PostsTypes = Types;
-export default Creators
+export default Creators;
 
 export const INITIAL_STATE = Immutable({
   posts: [],
   fetching: null,
   error: null,
-  username: null
 });
 
 export const request = (state) =>
