@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import createStore from './Redux/index'
 import { Router, Route, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 
 import MainView from './Containers/MainView';
 import PostView from './Containers/PostView';
 
-const store = createStore(combineReducers({
-    routing: routerReducer
-}));
+
+const store = createStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
 
